@@ -1,0 +1,64 @@
+a) What are the names of customers who have sent packages (shipments) to Sioux City?
+select distinct cust_name from customer c, shipment s where s.destination = 'Sioux City' and c.cust_id = s.cust_id;
+
+b) To what destinations have companies with revenue less than $1 million sent packages?
+select destination from shipment s, customer c where c.annual_revenue < 1000000 and s.cust_id = c.cust_id;
+
+c) What are the names and populations of cities that have received shipments weighing over 100 pounds?
+select distinct city_name, population from city c, shipment s where s.weight > 100 and s.destination = c.city_name;
+
+d) Who are the customers having over $5 million in annual revenue who have sent shipments weighing less than 1 pound?
+select distinct cust_name from customer c, shipment s where c.annual_revenue > 5000000 and s.cust_id = c.cust_id and s.weight < 2;
+
+e) Who are the customers having over $5 million in annual revenue who have sent shipments weighing less than 1 pound or have sent a shipment to San Francisco?
+select distinct cust_name from customer c, shipment s where (c.annual_revenue > 5000000 and s.cust_id = c.cust_id and s.weight < 2) or (s.cust_id = c.cust_id and s.destination = 'San Francisco');
+
+f) Who are the drivers who have delivered shipments for customers with annual revenue over $20 million to cities with populations over 1 million?
+select distinct driver_name from truck t,city c, customer cu, shipment s where cu.annual_revenue > 2000000 and c.population > 200000000 and c.city_name = s.destination and t.truck_no = s.truck_no;
+
+g) List the cities that have received shipments from customers having over $15 million in annual revenue.
+ select distinct s.destination from customer cu, shipment s where cu.annual_revenue > 1500000 and cu.cust_id = s.cust_id;
+
+h) List the names of drivers who have delivered shipments weighing over 100 pounds.
+select distinct driver_name from truck t, shipment s where s.weight > 100 and t.truck_no = s.truck_no;
+
+i) List the name and annual revenue of customers who have sent shipments weighing over 100 pounds.
+select distinct cust_name, annual_revenue from customer cu, shipment s where s.weight > 100 and cu.cust_id = s.cust_id;
+
+j) List the name and annual revenue of customers whose shipments have been delivered by truck driver Jensen.
+select distinct cust_name, annual_revenue from customer cu, truck t, shipment s where t.driver_name = 'Jensen' and cu.cust_id = s.cust_id and s.truck_no = t.truck_no;
+
+k) List customers who had shipments delivered by every truck. (use NOT EXISTS)
+
+
+l) List cities that have received shipments from every customer. (use NOT EXISTS)
+
+
+m) List drivers who have delivered shipments to every city. (use NOT EXISTS)
+select distinct driver_name from truck where not exists(select * from shipment s, city c where s.truck_no = truck.truck_no, group by s.truck_no having count(distinct s.destination) < count(distinct c.city_name));
+
+n) Customers who are manufacturers or have sent a package to St. Louis.
+select distinct cust_name from customer c, shipment s where c.cust_id = s.cust_id and (cust_type = 'manufacturer' or s.destination = 'St. Louis');
+
+o) Cities of population over 1 million which have received a 100-pound package  from customer 311.
+select distinct city_name fro city c, shipment s where s.cust_id = 311 and s.weight = 100 and c.population > 1000000;
+
+p) Trucks driven by Jake Stinson which have never delivered a shipment to Denver.
+select disinct truck_no from truck where driver_name = 'Jake Stinson' and truck_nonot in(select truck_no from shipment where destination='Denver');
+
+q) Customers with annual revenue over $10 million which have sent pacages under 1 pound to cities with population less than 10,000.
+select distinct cust_name from customer c, shipment s,city ci where c.annual_revenue > 1000000 and s.weight < 2 and ci.population < 10000 and c.cust_id = s.cust_id and ci.city_name = s.destination; 
+
+r) Create views for each of the following:
+	a. Customers with annual revenue under $1 million.
+	create view view1 as (select * from customer where annual_revenue < 1000000);
+	b. Customers with annual revenue between $1 million and $5 million.
+	create view view2 as (select * from customer where annual_revenue > 1000000 and annual_revenue < 500000);
+	c. Customers with annual revenue over $5 million.
+	 create view view3 as (select * from customer where annual_revenue > 5000000);
+
+s) Use these views to answer the following queries:
+	a. Which drivers have taken shipments to Los Angeles for customers with revenue over $5 million?
+	
+	b. What are the populations of cities which have received shipments from customers with revenue between $1 million and $5 million?
+	c. Which drivers have taken shipments to cities for customers with revenue under $1 million, and what are the populations of those cities?

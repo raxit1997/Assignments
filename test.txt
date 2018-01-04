@@ -1,0 +1,24 @@
+git init
+git config --local
+git config --local --list
+git status
+git log
+
+git add . //for all files
+git add filename //for particular files
+git commit -m 'your message'
+
+To find the difference between working area and repository
+git diff
+
+To find the difference between staging area and working area.
+git diff --staged
+git commit -m 'aaa'
+git diff hashcode1 hashcode2 //commits are identified by hashcode
+
+Branching : 
+git checkout -b branch_name //shift to the branch name
+git branch new_branch_name
+git branch //list of branches
+git branch -d branch_name //deletebranch
+git merge b1 b2
