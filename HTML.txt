@@ -1,0 +1,27 @@
+<!DOCTYPE html> -- to specify html 5
+Not case sensitive. best practice to use small letters.
+
+<head> tag : 
+<meta> -- for specifying character set and provide assistive technologies.
+<style> -- Embedded stylesheet.
+Three types - embedded, external, inline
+Class -- to group elements having the same properties or attributes as id is costly to use.
+Name the class based on content of the element.
+# for referencing id and . for referencing class.
+
+<body> tag : 
+<h1><h2>....<h6> -- Six levels of heading. Maintain the semantics for assistive technologies.
+<p> -- For specifying paragraph.
+<span> -- inline element span within span is allowed but div within span not allowed.
+<div> -- block element both span and div within div is allowed.
+<ul> and <ol> -- unordered and ordered list.
+Provide "id" only when necessary.
+<a> -- anchor tag for navigating to other pages.
+href -- provide link.
+target = "_self" -- opening in the same tab. Default value.
+target = "_blank" -- opening in the new tab.
+target = "_parent" -- open the previous page.
+<blockquote> -- by default indentation is done.
+escape sequences -- &lt;(>) &gt;(<) &quot;(") &appos;(')
+<img> -- definitely add alt tag.
+<table> -- thead, tbody, tfoot, td, tr, th, caption
