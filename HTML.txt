@@ -23,5 +23,6 @@ target = "_blank" -- opening in the new tab.
 target = "_parent" -- open the previous page.
 <blockquote> -- by default indentation is done.
 escape sequences -- &lt;(>) &gt;(<) &quot;(") &appos;(')
-<img> -- definitely add alt tag.
+<img> -- definitely add, alt tag.
 <table> -- thead, tbody, tfoot, td, tr, th, caption
+Semantic tags -- <header>, <footer>, <section>, <article>, <aside>, <nav>
