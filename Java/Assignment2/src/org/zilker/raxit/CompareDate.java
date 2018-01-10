@@ -12,6 +12,7 @@ public class CompareDate {
 	public static void compareDates(String date1, String date2) {
 		// SimpleDateFormat class for formatting the date.
 		SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+		formatDate.setLenient(false);
 		Date d1 = null, d2 = null;
 		try {
 			d1 = formatDate.parse(date1);

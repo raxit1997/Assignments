@@ -1,4 +1,4 @@
-package org.zilker.raxit;
+package org.zilker.beans;
 
 public class ContactDetails {
 
